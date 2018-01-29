@@ -22,8 +22,9 @@ from figqa.utils.datasets import FigQADataset
 
 
 def log_stuff(iter_idx, loss, batch, pred, val_dataloader, model,
-              criterion, epoch, optimizer, start_t, running_loss,
-              running_accs, viz, **kwargs):
+              criterion, epoch, optimizer, running_accs, viz, args,
+              **kwargs):
+    global running_loss, start_t
     #######################################################################
     # report numbers on this train batch
     if iter_idx % 100 != 0:
@@ -134,6 +135,7 @@ def batch_iter(dataloader, args, volatile=False):
         yield idx, batch
 
 def main(args):
+    global running_loss, start_t
     # logging info that needs to persist across iterations
     viz = utils.visualize.VisdomVisualize(env_name=args.env_name)
     viz.viz.text(str(args))

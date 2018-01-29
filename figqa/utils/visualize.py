@@ -4,7 +4,7 @@ import numpy as np
 import visdom
 
 class VisdomVisualize():
-    def __init__(self, server, port=8894, env_name='main',
+    def __init__(self, server='localhost', port=8894, env_name='main',
                  config_file='.visdom_config.json'):
         '''
         Initialize a visdom server on server:port

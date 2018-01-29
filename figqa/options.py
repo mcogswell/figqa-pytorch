@@ -26,7 +26,7 @@ def parse_arguments():
                         help='weight decay')
     parser.add_argument('--env-name', default='figqa',
                         help='visdom environment name')
-    parser.add_argument('--ngpus', default=-1,
+    parser.add_argument('--ngpus', default=-1, type=int,
                         help='number of gpus to use (default: all)')
 
     #####################################################################
