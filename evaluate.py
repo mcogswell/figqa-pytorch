@@ -28,9 +28,12 @@ def main(args):
                             num_workers=args.workers)
 
     # model
-    model = utils.load_model(fname=args.start_from)
+    model, model_args = utils.load_model(fname=args.start_from,
+                                            return_args=True)
     if args.cuda:
         model = model.cuda()
+        if args.cuda > 1:
+            model = nn.DataParallel(model, device_ids=list(range(args.cuda)))
     model.eval()
     criterion = nn.NLLLoss()
 
@@ -64,7 +67,7 @@ def main(args):
         accs_by_qtype[qtype] = np.concatenate(qaccs, axis=0).mean()
     result = {
         'split': split,
-        'model_kind': model.kind,
+        'model_kind': model_args['model'],
         'acc': accs.mean(),
         'accs_by_qtype': accs_by_qtype,
         'qtypes': [qt[0] for qt in utils.QTYPE_ID_TO_META],

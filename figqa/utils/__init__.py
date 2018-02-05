@@ -18,7 +18,7 @@ QTYPE_ID_TO_META = [
     ('Does X intersect Y?', ('line',)),
 ]
 
-def load_model(model_args=None, fname=None):
+def load_model(model_args=None, fname=None, return_args=False):
     from ..models import RelNet
     if model_args == fname:
         raise Exception('To load a model provide either model_args or the '
@@ -30,4 +30,7 @@ def load_model(model_args=None, fname=None):
     rn = RelNet(model_args)
     if fname is not None:
         rn.load_state_dict(mdict['state_dict'])
-    return rn
+    if return_args:
+        return rn, model_args
+    else:
+        return rn
