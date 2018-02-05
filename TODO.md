@@ -5,11 +5,12 @@ TODO before release
 3. (done) lookup checklist for releasing github code (remove history?)
 4. (done) lint code
 5. (done) update paper numbers to use val numbers from openreview
-6. test ngpus argument
+6. (done) test ngpus argument
 7. (done) fill in the running the code section of README
 8. replicate results in a couple more runs of the model
-9. configure run.py so it does not use slurm by default
+9. (done) configure run.py so it does not use slurm by default
 10. (done) support with and without visdom? NO
+11. note about which pytorch version I'm using
 
 TODO
 ---

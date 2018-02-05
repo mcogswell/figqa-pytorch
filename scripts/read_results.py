@@ -15,7 +15,6 @@ def main():
     args = docopt.docopt(textwrap.dedent(main.__doc__))
 
     fnames = glob.glob(args['<result_file_glob>'])
-    print(fnames)
     for fname in fnames:
         with open(fname, 'rb') as f:
             try:

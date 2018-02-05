@@ -97,6 +97,6 @@ runcmd('python scripts/prepro_text.py \
 #            --figqa-dir {figureqa_dir} \
 #            --figqa-pre {figureqa_pre} \
 #            --start-from {checkpoint} \
-#            --result-name rn \
+#            --result-name {short_name} \
 #            --batch-size 500'.format(**locals()))
 

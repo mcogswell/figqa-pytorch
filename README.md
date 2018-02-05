@@ -145,7 +145,7 @@ Running the code
    and various other meta-data for the model. Running
 
     ```
-    $ ./scripts/read_results.py
+    $ ./scripts/read_results.py data/results/result_*_<result-name>.pkl
     ```
 
    will report basic results from these files.
