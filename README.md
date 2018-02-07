@@ -67,8 +67,8 @@ the corresponding models reported in the paper. Why is this? I don't know, but
 two possible explanations relate to slow training dynamics and minor differences
 in hyperparameters.
     * The RN runs into an obstacle during training. From about iteration 100K to
-      iteration 900K the model seems to have converged. However, there's a
-      20%-30% gain in validation accuracy that begins at about iteration 1M
+      iteration 700K the model seems to have converged. However, there's a
+      30%-35% gain in validation accuracy that begins at about iteration 1M
       (left plot). The model initially can not answer any questions about
       bar/pie charts, but it suddenly starts to do well on these kinds of plots
       at that transition point.
@@ -81,7 +81,8 @@ in hyperparameters.
     * Some hyperparameters are slightly different than the ones
       specified in the paper, though I have tried to be fairly accurate
       in my replication of hyperparameters. (One exception is the
-      learning rate decay, which is 1.0 instead of 0.9.)
+      learning rate decay, which is 1.0 instead of 0.9 since 0.9 did
+      not converge for me.)
 
 
 [figqa_site]: https://datasets.maluuba.com/FigureQA
