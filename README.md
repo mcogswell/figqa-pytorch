@@ -51,9 +51,9 @@ Results
 
 | Model                                                                                     | train1 accuracy | validation1 accuracy | validation2 accuracy | validation2 accuracy (from the paper) | test2 accuracy (from the paper) |
 |----------                                                                                 |-----------------|----------------------|---------------       |-----------                            |-------------------              |
-| [LSTM](https://www.cc.gatech.edu/~mcogswell6/figqa-pytorch/models/lstm45_ep77.pt)         | 58.18%          | 53.42%               | 51.96%               | 50.01%                                | 50.01%                          |
-| [CNN+LSTM](https://www.cc.gatech.edu/~mcogswell6/figqa-pytorch/models/cnn-lstm45_ep86.pt) | 76.88%          | 72.79%               | 67.98%               | 56.16%                                | 56.00%                             |
-| [RN](https://www.cc.gatech.edu/~mcogswell6/figqa-pytorch/models/rn45_ep213.pt)            | 87.93%          | 86.72%               | 80.39%               | 72.54%                                | 72.40%                             |
+| [LSTM](https://www.cc.gatech.edu/~mcogswell6/figqa-pytorch/models/repl-lstm1_ep143.pt)         | 54.19%          | 53.26%               | 52.18%               | 50.01%                                | 50.01%                          |
+| [CNN+LSTM](https://www.cc.gatech.edu/~mcogswell6/figqa-pytorch/models/repl-cnn-lstm1_ep119.pt) | 75.62%          | 71.48%               | 63.80%               | 56.16%                                | 56.00%                             |
+| [RN](https://www.cc.gatech.edu/~mcogswell6/figqa-pytorch/models/repl-rn1_ep420.pt)             | 93.12%          | 90.71%               | 86.14%               | 72.54%                                | 72.40%                             |
 | Human                                                                                     |                 |                      |                      | 91.21%                             |
 
 Observations:
