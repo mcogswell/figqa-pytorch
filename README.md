@@ -54,7 +54,7 @@ Results
 | [LSTM](https://www.cc.gatech.edu/~mcogswell6/figqa-pytorch/models/repl-lstm1_ep143.pt)         | 54.19%          | 53.26%               | 52.18%               | 50.01%                                | 50.01%                          |
 | [CNN+LSTM](https://www.cc.gatech.edu/~mcogswell6/figqa-pytorch/models/repl-cnn-lstm1_ep119.pt) | 75.62%          | 71.48%               | 63.80%               | 56.16%                                | 56.00%                             |
 | [RN](https://www.cc.gatech.edu/~mcogswell6/figqa-pytorch/models/repl-rn1_ep420.pt)             | 93.12%          | 90.71%               | 86.14%               | 72.54%                                | 72.40%                             |
-| Human                                                                                     |                 |                      |                      | 91.21%                             |
+| Human                                                                                          | -               | -                    | -                    | -                                     | 91.21%                             |
 
 Observations:
 
