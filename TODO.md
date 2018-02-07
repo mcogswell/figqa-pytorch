@@ -10,7 +10,8 @@ TODO before release
 8. replicate results in a couple more runs of the model
 9. (done) configure run.py so it does not use slurm by default
 10. (done) support with and without visdom? NO
-11. note about which pytorch version I'm using
+11. (done) note about which pytorch version I'm using
+12. (done) fix saving/loading bug using DataParallel
 
 TODO
 ---

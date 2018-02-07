@@ -92,6 +92,8 @@ in hyperparameters.
 Running the code
 ===
 
+(Note: implemented with PyTorch version 0.4.0a0+05ebd21)
+
 1. Download the [FigureQA dataset][figqa_dl] and untar the archives
    into `data/figureqa`. That directory should contain directories named
   `sample_train1`, `train1`, `validation1`, `validation2`,
