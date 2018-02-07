@@ -29,11 +29,8 @@ def main(args):
 
     # model
     model, model_args = utils.load_model(fname=args.start_from,
-                                            return_args=True)
-    if args.cuda:
-        model = model.cuda()
-        if args.cuda > 1:
-            model = nn.DataParallel(model, device_ids=list(range(args.cuda)))
+                                         return_args=True,
+                                         ngpus=args.cuda)
     model.eval()
     criterion = nn.NLLLoss()
 

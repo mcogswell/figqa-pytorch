@@ -157,15 +157,10 @@ def main(args):
 
     # model
     if args.start_from:
-        model = utils.load_model(fname=args.start_from)
+        model = utils.load_model(fname=args.start_from, ngpus=args.cuda)
     else:
         model_args = figqa.options.model_args(args)
-        model = utils.load_model(model_args)
-    if args.cuda:
-        model = model.cuda()
-        if args.cuda > 1:
-            # devices managed with $CUDA_VISIBLE_DEVICES
-            model = nn.DataParallel(model, device_ids=list(range(args.cuda)))
+        model = utils.load_model(model_args, ngpus=args.cuda)
 
     # optimization
     optimizer = torch.optim.Adam(model.parameters(), lr=args.lr,
