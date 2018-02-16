@@ -49,7 +49,7 @@ to predict an answer.
 Results
 ---
 
-| Model                                                                                     | train1 accuracy | validation1 accuracy | validation2 accuracy | validation2 accuracy (from the paper) | test2 accuracy (from the paper) |
+| Model (click to download weights)                                                              | train1 accuracy | validation1 accuracy | validation2 accuracy | validation2 accuracy (from the paper) | test2 accuracy (from the paper) |
 |----------                                                                                 |-----------------|----------------------|---------------       |-----------                            |-------------------              |
 | [LSTM](https://www.cc.gatech.edu/~mcogswell6/figqa-pytorch/models/repl-lstm1_ep143.pt)         | 54.19%          | 53.26%               | 52.18%               | 50.01%                                | 50.01%                          |
 | [CNN+LSTM](https://www.cc.gatech.edu/~mcogswell6/figqa-pytorch/models/repl-cnn-lstm1_ep119.pt) | 75.62%          | 71.48%               | 63.80%               | 56.16%                                | 56.00%                             |
@@ -59,11 +59,11 @@ Results
 Observations:
 
 * The LSTM achieves slightly better than the 50% performance it is supposed to
-achieve on validation/test data, so there might be some bias in the validation
-set. If so, the bias is small and not very sigificant.
+achieve on validation/test data, so __there might be some bias in the validation
+set__. If so, the bias is small and not very sigificant.
 
-* All models implemented here achieve much higher validation2 accuracies than
-the corresponding models reported in the paper. Why is this? I don't know, but
+* __All models implemented here achieve much higher validation2 accuracies than
+the corresponding models reported in the paper.__ Why is this? I don't know, but
 two possible explanations relate to slow training dynamics and minor differences
 in hyperparameters.
     * The RN runs into an obstacle during training. From about iteration 100K to
@@ -72,6 +72,9 @@ in hyperparameters.
       (left plot). The model initially can not answer any questions about
       bar/pie charts, but it suddenly starts to do well on these kinds of plots
       at that transition point.
+      (Train time note: There are about 10400 iterations per epoch. Each epoch takes
+      about 45 minutes to train on 3 Titan Xp gpus, so this plot took about 12
+      days.)
       <div style="float:left">
       <img title="RN learning curve"
            src="images/acc_learning_curve.png" width="49%"/>
