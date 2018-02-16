@@ -61,7 +61,8 @@ def load_model(model_args=None, fname=None, return_args=False, ngpus=0):
     rn = RelNet(model_args)
     # Note: This does NOT maintain the DataParallel device configuration
     # from the source even if the target is DataParallel.
-    _load_state(rn, mdict['state_dict'])
+    if fname is not None:
+        _load_state(rn, mdict['state_dict'])
     if ngpus:
         rn = rn.cuda()
         if ngpus > 1:
