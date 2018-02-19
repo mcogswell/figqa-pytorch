@@ -12,13 +12,12 @@ import torch
 import torch.optim
 import torch.optim.lr_scheduler
 import torch.nn as nn
-from torch.autograd import Variable
 from torch.utils.data import DataLoader
 
 import figqa.options
 import figqa.utils as utils
 import figqa.utils.visualize
-from figqa.utils.datasets import FigQADataset
+from figqa.utils.datasets import FigQADataset, batch_iter
 
 
 def log_stuff(iter_idx, loss, batch, pred, val_dataloader, model,
@@ -123,16 +122,6 @@ def checkpoint_stuff(model, optimizer, epoch, args, model_args, iter_idx=0,
         'iter_idx': iter_idx,
         'epoch': epoch,
     }, optim_path)
-
-def batch_iter(dataloader, args, volatile=False):
-    '''Generate appropriately transformed batches.'''
-    for idx, batch in enumerate(dataloader):
-        for k in batch:
-            if args.cuda:
-                # assumed cpu tensors are in pinned memory
-                batch[k] = batch[k].cuda(async=True)
-            batch[k] = Variable(batch[k], volatile=volatile)
-        yield idx, batch
 
 def main(args):
     global running_loss, start_t

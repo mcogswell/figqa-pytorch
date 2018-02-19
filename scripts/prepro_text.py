@@ -8,18 +8,13 @@ import numpy as np
 from nltk.tokenize import word_tokenize
 from PIL import Image
 
+from figqa.utils.dataset import ques_to_tensor
 
 def tokenize_qas(qa_pairs):
     for qa_pair in qa_pairs:
         qa_pair['question'] = word_tokenize(qa_pair['question_string'])
         if 'UNK' in qa_pair['question']:
             print(qa_pair['question'], qa_pair['question_string'])
-
-def ques_to_tensor(ques, word2ind):
-    result = np.zeros(args.max_ques_len, dtype='uint32')
-    for i, w in enumerate(ques):
-        result[i] = word2ind[w]
-    return result
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser('Process figureqa text into tensors: '

@@ -5,14 +5,37 @@ import h5py
 from PIL import Image
 import PIL.ImageOps as ImageOps
 
+import torch
+from torch.autograd import Variable
 from torch.utils.data import Dataset
 import torchvision.transforms as transforms
 
 from figqa.utils.sequences import NULL
 
+def batch_iter(dataloader, args, volatile=False):
+    '''Generate appropriately transformed batches.'''
+    for idx, batch in enumerate(dataloader):
+        for k in batch:
+            if not torch.is_tensor(batch[k]):
+                continue
+            if args.cuda:
+                # assumed cpu tensors are in pinned memory
+                batch[k] = batch[k].cuda(async=True)
+            batch[k] = Variable(batch[k], volatile=volatile)
+        yield idx, batch
+
+def ques_to_tensor(ques, word2ind):
+    result = np.zeros(args.max_ques_len, dtype='uint32')
+    for i, w in enumerate(ques):
+        result[i] = word2ind[w]
+    return result
+
+def ques_tensor_to_str(ques, ind2word):
+    return ' '.join(ind2word[i] for i in map(int, ques) if i != NULL)
+
 class FigQADataset(Dataset):
 
-    def __init__(self, dname, prepro_dname, split):
+    def __init__(self, dname, prepro_dname, split, max_examples=None):
         '''
         PyTorch Dataset for loading FigureQA data from pre-processed
         h5 files (see scripts/prepro_text.py). Questions, answers, images,
@@ -22,10 +45,12 @@ class FigQADataset(Dataset):
             dname: directory of raw FigureQA download (one directory per split)
             prepro_dname: directory with preprocessed h5 files
             split: name of dataset split (e.g., train1, validation2, ...)
+            max_examples: use only examples 0..max_examples-1 (default: use all)
         '''
         self.dname = dname
         self.prepro_dname = prepro_dname
         self.split = split
+        self.max_examples = max_examples
 
         # load QAs into numpy arrays
         fname = pth.join(prepro_dname, split, 'qa_pairs.h5')
@@ -86,6 +111,7 @@ class FigQADataset(Dataset):
 
         return {
             'img': img,
+            'img_path': path,
             'question': question,
             'question_len': question_len,
             'qtype': qtype,
@@ -93,4 +119,7 @@ class FigQADataset(Dataset):
         }
 
     def __len__(self):
-        return len(self.qa_pairs['questions'])
+        if self.max_examples:
+            return min(self.max_examples, len(self.qa_pairs['questions']))
+        else:
+            return len(self.qa_pairs['questions'])

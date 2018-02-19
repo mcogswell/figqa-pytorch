@@ -100,3 +100,12 @@ runcmd('python scripts/prepro_text.py \
 #            --result-name {short_name} \
 #            --batch-size 500'.format(**locals()))
 
+# visualize
+#runcmd('python examples.py \
+#        --val-split validation1 \
+#        --figqa-dir {figureqa_dir} \
+#        --figqa-pre {figureqa_pre} \
+#        --start-from {checkpoint} \
+#        --result-name {short_name} \
+#        --max-examples 50 \
+#        --batch-size 25'.format(**locals()))

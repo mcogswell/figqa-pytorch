@@ -11,7 +11,7 @@ def parse_arguments():
     parser = argparse.ArgumentParser(description='FigureQA Models in PyTorch')
 
     #####################################################################
-    # Training
+    # Training (train.py)
     parser.add_argument('--batch-size', type=int, default=64,
                         help='batch size')
     parser.add_argument('--shuffle-train', type=int, default=1,
@@ -30,11 +30,18 @@ def parse_arguments():
                         help='number of gpus to use (default: all)')
 
     #####################################################################
-    # Evaluation
+    # Evaluation (evaluate.py)
     parser.add_argument('--result-dir', default='data/results/',
                         help='directory to save results in')
     parser.add_argument('--result-name', default='',
                         help='name to identify the context (esp model) for this result')
+
+    #####################################################################
+    # Examples (examples.py)
+    parser.add_argument('--max-examples', type=int,
+                        help='maximum number of examples to use for evaluation')
+    parser.add_argument('--examples-dir', default='data/examples/',
+                        help='directory to store generated web page in')
 
     #####################################################################
     # checkpoints

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<head>
+<meta charset="utf-8">
+<title>Vis</title>
+<!-- Google Fonts -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+<!-- CSS Reset -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.css">
+<!-- Milligram CSS minified -->
+<link rel="stylesheet" href="milligram/dist/milligram.min.css">
+<link rel="stylesheet" href="vis_style.css">
+<style>
+img {
+    max-width: 300px;
+    max-height: 300px;
+}
+</style>
+</head>
+<body id="body">
+<table>
+{% for example in examples %}
+<tr>
+<td>
+<img src={{example.img}}></img> <br>
+{{example.question}} <br>
+<b>GT Ans: </b>{{example.gt_answer}} <br>
+<b>Pred Ans: </b>{{example.pred_answer}} </td>
+</tr>
+{% endfor %}
+</table>
+
+</body>
+</html>

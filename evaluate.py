@@ -11,9 +11,7 @@ from torch.utils.data import DataLoader
 
 import figqa.options
 import figqa.utils as utils
-from figqa.utils.datasets import FigQADataset
-
-from train import batch_iter
+from figqa.utils.datasets import FigQADataset, batch_iter
 
 
 def main(args):
