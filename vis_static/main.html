@@ -23,6 +23,7 @@ img {
 <td>
 <img src={{example.img}}></img> <br>
 {{example.question}} <br>
+<b>Correct: </b>{{example.gt_answer == example.pred_answer}} <br>
 <b>GT Ans: </b>{{example.gt_answer}} <br>
 <b>Pred Ans: </b>{{example.pred_answer}} </td>
 </tr>
