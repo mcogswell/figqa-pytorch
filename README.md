@@ -58,6 +58,8 @@ Results
 
 Observations:
 
+* View example outputs [here](examples/examples.md).
+
 * The LSTM achieves slightly better than the 50% performance it is supposed to
 achieve on validation/test data, so __there might be some bias in the validation
 set__. If so, the bias is small and not very sigificant.
